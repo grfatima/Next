@@ -1,7 +1,13 @@
+import Link from "next/link";
 import React from "react";
 
 const Navbar = () => {
-  return <div>Navbar</div>;
+  return (
+    <div className="bg-pink-300 flex gap-30 text-2xl justify-center items-center text-white h-[10vh]">
+      <Link href="/">Users ssr</Link>
+      <Link href="/usersCsr">Users csr</Link>
+    </div>
+  );
 };
 
 export default Navbar;
