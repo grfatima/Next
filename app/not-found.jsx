@@ -9,7 +9,7 @@ const NotFound = () => {
         Səhifə tapılmadı. Axtardığınız səhifə mövcud deyil və ya silinmişdir.
       </p>
       <Link
-        href="/"
+        href="/author"
         className="px-6 py-3 bg-pink-300 text-white rounded-full shadow-md hover:bg-pink-300 transition"
       >
         Ana Səhifəyə qayıt
