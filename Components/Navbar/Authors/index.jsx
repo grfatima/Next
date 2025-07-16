@@ -13,6 +13,16 @@ const Authors = () => {
   });
   const [formuGoster, setFormuGoster] = useState(false);
 
+  const [username, setUsername] = useState("");
+  const [photo, setPhoto] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const formdata = new FormData();
+    formdata.append("username", username);
+    formdata.append("profilePhoto", photo);
+  };
+
   useEffect(() => {
     axios.get(process.env.NEXT_PUBLIC_AU).then(({ data }) => {
       setAuthors(data);
@@ -119,6 +129,33 @@ const Authors = () => {
       >
         {formuGoster ? " Bagla" : "+ Elave Et"}
       </button>
+
+      <div className="flex justify-center items-center min-h-screen bg-pink-100">
+        <form
+          onSubmit={(e) => handleSubmit(e)}
+          className="bg-pink-200 p-8 rounded-lg shadow-lg w-80 space-y-6"
+        >
+          <input
+            type="text"
+            placeholder="Enter username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            className="w-full p-3 border-2 border-pink-400 rounded-lg focus:outline-none focus:border-pink-600 transition"
+          />
+          <input
+            type="file"
+            onChange={(e) => {
+              setPhoto(e.target.files[0]);
+            }}
+            className="w-full p-3 border-2 border-pink-400 rounded-lg bg-white cursor-pointer hover:bg-pink-50 transition"
+          />
+          <input
+            type="submit"
+            value="Send"
+            className="w-full py-3 bg-pink-500 text-white font-semibold rounded-lg hover:bg-pink-600 transition"
+          />
+        </form>
+      </div>
     </div>
   );
 };
