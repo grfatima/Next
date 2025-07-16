@@ -14,13 +14,17 @@ const Authors = () => {
   const [formuGoster, setFormuGoster] = useState(false);
 
   const [username, setUsername] = useState("");
-  const [photo, setPhoto] = useState("");
+  const [photo, setPhoto] = useState(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const formdata = new FormData();
     formdata.append("username", username);
-    formdata.append("profilePhoto", photo);
+    formdata.append("photo", photo);
+
+    axios.post("http://localhost:5050/", formdata).then((res) => {
+      console.log("Yükləmə uğurludur:", res.data);
+    });
   };
 
   useEffect(() => {
